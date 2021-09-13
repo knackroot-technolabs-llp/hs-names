@@ -25,6 +25,9 @@ const ROOT_PATH = Path.resolve(__dirname, 'data', 'root.zone');
 const WORDS_PATH = '/usr/share/dict/words';
 
 // These names are blacklisted entirely.
+// can be added
+// .onion
+// .internal
 const BLACKLIST = [
   'example', // ICANN reserved
   'invalid', // ICANN reserved
@@ -101,6 +104,8 @@ const VALUES = [
   ['webtorrent.io', 405970], // WebTorrent LLC
 ];
 
+// generic TLD
+// requires update - https://en.wikipedia.org/wiki/Sponsored_top-level_domain
 const TLD = [
   'arpa',
   'com',
@@ -112,6 +117,7 @@ const TLD = [
   'org'
 ];
 
+// country code TLD
 const CCTLD = (() => {
   const data = fs.readFileSync(TLD_PATH, 'utf8');
   const lines = data.split('\n');
@@ -215,8 +221,8 @@ const ALEXA = (() => {
     result.push(domain);
     cur += 1;
   }
-
-  assert(result.length === 1000000);
+  // Now Alexa doesn return 1M records. It returned around ~0.6M. So ignoring 1M check
+  //assert(result.length === 1000000);
 
   return result;
 })();

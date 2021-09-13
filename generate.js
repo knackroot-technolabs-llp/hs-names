@@ -70,6 +70,7 @@ const NAMES_DB = Path.resolve(__dirname, 'build', 'names.db');
 // more info:
 //   https://en.wikipedia.org/wiki/United_States_embargoes
 //   https://en.wikipedia.org/wiki/United_States_embargoes#Countries
+// TODO: Turkey needs to be added
 const embargoes = new Set([
   'ir', // Iran
   'xn--mgba3a4f16a', // Iran (punycode)
@@ -342,6 +343,7 @@ function sortHash(a, b) {
  */
 
 const [names, invalid, top100] = compile();
+console.log('names len', names.length);
 const items = [];
 
 // 1/3 to TLDs, 1/3 to names, 1/3 to top 100

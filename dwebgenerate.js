@@ -10,6 +10,7 @@ const HISTORICALTLD = require('./names/historical.json');
 const REJECTEDTLD = require('./names/rejected.json');
 const EXISTINGPROJECTTLD = require('./names/existingproject.json');
 const ALEXA = require('./names/alexa.json');
+const DWEBCUSTOME = require('./names/dwebcustom.json');
 const util = require('./util');
 
 // fetch individual list
@@ -18,6 +19,7 @@ const blacklist = new Set(BLACKLISTTLD);
 const historicaltld = new Set(HISTORICALTLD);
 const rejectedtld = new Set(REJECTEDTLD);
 const existingprojecttld = new Set(EXISTINGPROJECTTLD);
+const customtld = new Set(DWEBCUSTOME);
 
 // build alexa list
 let alexaSet = new Set();
@@ -125,7 +127,7 @@ for (let i = 0; i < 20000; i++) {
 
 
 // merge all list
-let arr = [...rtld, ...blacklist, ...historicaltld, ...rejectedtld, ...existingprojecttld, ...alexaSet];
+let arr = [...rtld, ...blacklist, ...historicaltld, ...rejectedtld, ...existingprojecttld, ...alexaSet, ...customtld];
 arr.sort();
 
 // remove duplicate
